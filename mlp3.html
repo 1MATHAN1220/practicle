@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 3 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+import numpy as np
+import pandas as pd
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Load Iris dataset
+iris = datasets.load_iris()
+
+X = iris.data
+y = iris.target
+
+# Convert to binary classification
+binary_class_indices = np.where(y != 2)
+X, y = X[binary_class_indices], y[binary_class_indices]
+
+y = np.where(y == 0, 0, 1)
+
+# Split data into training and testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+# Standardize the data
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Create and train Logistic Regression model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Prediction
+y_pred = model.predict(X_test)
+
+# Accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy:.2f}')
+
+# Confusion Matrix
+conf_matrix = confusion_matrix(y_test, y_pred)
+print('Confusion Matrix:')
+print(conf_matrix)
+
+# Classification Report
+class_report = classification_report(y_test, y_pred)
+print('Classification Report:')
+print(class_report)
+
+
+__________________________________________________________________________________________________
+
+உங்களது கணினியில் File Explorer (My Computer) திறந்து
+ இந்த ஃபோல்டருக்குச் செல்லுங்கள்:
+ C:\Users\PGLAB_NEW\AppData\Local\Programs\Python\Python310\அங்கு இருக்கும்
+  pandas.py என்ற ஃபைலை கண்டுபிடித்து, அதன் பெயரை மாற்றுங்கள் 
+  (உதாரணமாக: my_pandas_practice.py என்று மாற்றலாம்) அல்லது அதை
+   Delete செய்துவிடுங்கள்.
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

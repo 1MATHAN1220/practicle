@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 5 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+pro5___________________
+
+vehicle.xml
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/css" href="data.css"?&gt;
+
+&lt;vehicle&gt;
+
+    &lt;bike&gt;
+        &lt;title&gt;Royal Enfield&lt;/title&gt;
+        &lt;author&gt;Royal Enfield&lt;/author&gt;
+        &lt;year&gt;1997&lt;/year&gt;
+    &lt;/bike&gt;
+
+    &lt;royal&gt;
+        &lt;title&gt;Developer&lt;/title&gt;
+        &lt;developer&gt;Royal Enfield&lt;/developer&gt;
+    &lt;/royal&gt;
+
+    &lt;series&gt;
+        Royal Enfield's Classic Series: Exploring the Timeless Elegance
+    &lt;/series&gt;
+
+    &lt;royalbike&gt;
+        Royal Enfield is an Indian multinational motorcycle manufacturing
+        company headquartered in Chennai. The Royal Enfield brand, including
+        its original English heritage, is the oldest global motorcycle brand
+        in continuous production.
+
+        The Himalayan was conceived as an adventure touring or dual-sport
+        motorcycle. The Himalayan differs considerably from the other
+        motorcycles offered by Royal Enfield, most of which are various
+        incarnations of the Bullet. Pierre Terblanche, formerly of Ducati and
+        Moto Guzzi, headed Royal Enfield's design team during development of
+        the Himalayan.
+    &lt;/royalbike&gt;
+
+    &lt;history&gt;MODEL HISTORY&lt;/history&gt;
+
+    &lt;story&gt;
+        After the Indian Independence Act of 1947, the new government looked
+        for a suitable motorcycle for its army to patrol the country's borders.
+        In 1952, the Royal Enfield Bullet was chosen as a suitable motorcycle
+        for the job.
+
+        In 1954, the government ordered 800 units of the 350 cc model.
+        In 1955, the Redditch company partnered with Madras Motors in India
+        to form Enfield India, which assembled the 350 cc Royal Enfield Bullet
+        motorcycle in Madras, now called Chennai, under licence.
+
+        The tooling was sold to Enfield India so that it could manufacture
+        components. By 1962, all components were made in India.
+    &lt;/story&gt;
+
+    &lt;sign&gt;Sign In&lt;/sign&gt;
+
+    &lt;form&gt;
+        &lt;field&gt;
+            &lt;label&gt;First Name&lt;/label&gt;
+            &lt;input type="text" name="first_name"/&gt;
+        &lt;/field&gt;
+
+        &lt;field&gt;
+            &lt;label&gt;Last Name&lt;/label&gt;
+            &lt;input type="text" name="last_name"/&gt;
+        &lt;/field&gt;
+
+        &lt;field&gt;
+            &lt;label&gt;Email&lt;/label&gt;
+            &lt;input type="email" name="email"/&gt;
+        &lt;/field&gt;
+
+        &lt;field&gt;
+            &lt;label&gt;Password&lt;/label&gt;
+            &lt;input type="password" name="password"/&gt;
+        &lt;/field&gt;
+
+        &lt;field&gt;
+            &lt;label&gt;Submit&lt;/label&gt;
+            &lt;input type="submit" value="Register"/&gt;
+        &lt;/field&gt;
+    &lt;/form&gt;
+
+&lt;/vehicle&gt;
+__________________________________________________________________________________________________
+
+data.css
+
+vehicle {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    display: block;
+}
+
+bike {
+    display: block;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: rgb(247, 243, 238);
+    color: #913831;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+title {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+author {
+    display: block;
+    font-style: italic;
+    font-size: 18px;
+}
+
+year {
+    display: block;
+    color: rgb(129, 123, 123);
+    font-size: 18px;
+}
+
+/* Developer section */
+royal {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(224, 235, 231);
+    border: 1px solid #ccc;
+}
+
+developer {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Series heading */
+series {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #319139;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* History heading */
+history {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #319139;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Main content */
+royalbike,
+story {
+    display: block;
+    border: 1px solid #ccc;
+    background-color: rgb(247, 243, 238);
+    color: #242222;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+/* Sign in heading */
+sign {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 25px;
+}
+
+/* Form */
+form {
+    display: block;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: rgb(247, 243, 238);
+}
+
+field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    font-size: 16px;
+    color: black;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 180px;
+    padding: 8px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    background-color: #c07166;
+    width: 100px;
+    margin-left: 105px;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

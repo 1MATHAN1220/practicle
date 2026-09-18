@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 4 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+index.html
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Novel books&lt;/title&gt;
+&lt;link rel="stylesheet" href="book.css"&gt;
+&lt;style&gt;
+.content {
+display: flex;
+flex-direction: column;
+}
+.image-content {
+margin: 50px;
+display: flex;
+}
+.author-info {
+margin: 20px;
+}
+.works{
+margin-top: 25px;
+}
+table, th, td{
+margin-top: 10px;
+border-collapse: collapse;
+padding: 5px;
+border: 1px solid white;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="content" style="align-items: center;"&gt;
+&lt;h1&gt;The Great Indian Novel&lt;/h1&gt;
+&lt;h3 style="padding-top: 20px;"&gt;Ponniyin selvan&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class="image-content"&gt;
+&lt;a href="ponniyin-selvan.pdf"&gt;&lt;img src="ponniyinselvan.jpg"&gt;
+&lt;p style="font-weight: 600; color: aliceblue; text-align: center; padding-top: 20px;"&gt; Read it&lt;/p&gt;&lt;/a&gt;
+&lt;div class="author-info"&gt;
+&lt;h4&gt;AUTHOR: KALKI KRISHNAMURTHY&lt;/h4&gt;
+&lt;div style="display: flex;"&gt;
+&lt;p style="padding-top: 20px; line-height: 27px;"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kalki R Krishnamurthy
+(1899-1954) is best known
+for his historical fiction – Sivakamiyin Sapatham, Ponniyin Selvan and Parthiban Kanavu – recreating
+the glorious eras
+of the Pallavas and the Cholas. The conquests and art and culture of these two kingly dynasties are
+brought to bear
+on contemporary Tamil self-fashioning. Alai Osai, which the author deemed his best work, documents
+the turbulent years
+of the freedom struggle between 1934 and1947, seen through the eyes of ordinary people who are
+inevitably affected by
+the socio-political changes.
+&lt;/p&gt;
+ &lt;span&gt;&lt;img src="kalki.jpg" width="180px" height="180px"&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;h4 style="padding-top: 20px;"&gt;HONOURS:&lt;/h4&gt;
+&lt;p style="padding-top: 20px; line-height: 27px;"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The release of a postage stamp in
+honour of Krishnamurthy was among the highlights of the centenary celebrations. Government of Tamil Nadu
+announced the nationalisation of Krishnamurthy‘s works, this will enable publishers to produce reprints
+of his works.
+Krishnamuthy had the Sangeetha Kalasikhamani award conferred on him by The Indian Fine Arts Society in
+1953.&lt;/p&gt;
+&lt;div class="works"&gt;
+&lt;h4&gt;Works:&lt;/h4&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt;Serial&lt;/th&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Settings &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;01&lt;/td&gt;
+&lt;td&gt; Sivagamiyin Sapatham (1 January 1944 – 30 June 1946)&lt;/td&gt;
+&lt;td&gt;Pallava Dynasty&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;02&lt;/td&gt;
+&lt;td&gt; Parthiban Kanavu (16 October 1941 – 10 February 1943)[&lt;/td&gt;
+&lt;td&gt;Pallava Dynasty&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;03&lt;/td&gt;
+&lt;td&gt; Ponniyin Selvan (29 October 1950 – 16 May 1954)&lt;/td&gt;
+&lt;td&gt;Chola Dynasty&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;04&lt;/td&gt;
+&lt;td&gt; Solaimalai Ilavarasi (1947)&lt;/td&gt;
+&lt;td&gt;The Independence of India&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+__________________________________________________________________________________________________
+
+ponniyin-selvan.pdf
+
+ponniyinselvan.jpg
+
+kalki.jpg
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

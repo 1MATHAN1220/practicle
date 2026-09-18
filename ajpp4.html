@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 4 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ajplab;
+
+/**
+ *
+ * @author PGLAB_NEW
+ */
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class color extends JFrame {
+
+    private JButton[][] buttons;
+    private Color[][] colors;
+
+
+    public color() {
+
+        setLayout(new GridLayout(10, 10));
+
+        buttons = new JButton[10][10];
+        colors = new Color[10][10];
+
+
+        for (int i = 0; i < 10; i++) {
+
+            for (int j = 0; j < 10; j++) {
+
+                int red = Math.min(i * 25, 255);
+                int green = Math.min(j * 25, 255);
+                int blue = Math.min((i + j) * 25, 255);
+
+                colors[i][j] = new Color(red, green, blue);
+
+
+                buttons[i][j] = new JButton();
+                buttons[i][j].setBackground(colors[i][j]);
+
+                buttons[i][j].addActionListener(new ButtonListener());
+
+                add(buttons[i][j]);
+            }
+        }
+
+
+        setTitle("Color Palette");
+        setSize(500, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+
+    private class ButtonListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            JButton button = (JButton)e.getSource();
+
+            Color color = button.getBackground();
+
+            System.out.println("Selected color: " + color);
+        }
+    }
+
+
+    public static void main(String[] args) {
+
+        new color();
+
+    }
+}
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 6 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+pro6__________
+
+index.html
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;Image Maps&lt;/h2&gt;
+&lt;p&gt;Try to click on the computer, phone, or the cup of coffee in the image below:&lt;/p&gt;
+&lt;p&gt;The usemap value starts with a hash tag # followed by the name of the image map, and is used to create a relationship between the image and the image map.&lt;/p&gt;
+&lt;img src="lap.jpg" alt="Workplace" usemap="#workmap" width="500" height="400"&gt;
+&lt;map name="workmap"&gt;
+&lt;area shape="rect" coords="34,44,270,350" alt="note" href="laptop.html"&gt;
+&lt;area shape="rect" coords="400,200,333,250" alt="Phone" href="phone.html"&gt;
+&lt;area shape="circle" coords="200,250, 500, 700" alt="Cup of coffee" href="coffee.html"&gt;
+&lt;/map&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+__________________________________________________________________________________________________
+
+coffee.html
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Document&lt;/title&gt;
+&lt;link rel="stylesheet" href="coffee.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1 class="heading"&gt;COFFEE&lt;/h1&gt;
+&lt;div class="content"&gt;
+&lt;div&gt;
+&lt;img src="coffee.jpg" height="500px" width="600px" alt="coffee-image"&gt;
+&lt;/div&gt;
+&lt;div class="text-content"&gt;
+&lt;h1&gt;Taste like a heaven!&lt;/h1&gt;
+&lt;h4 class="text"&gt;Take a sip of coffee you'll feel the heaven!&lt;/h4&gt;
+&lt;p class="text"&gt;Arabica is the most popular type of coffee, hands down.&lt;/p&gt;
+&lt;p class="text"&gt; If you've ever googled “coffee history”, you will have come across the famous story &lt;/p&gt;
+&lt;p class="text"&gt;More pages, more bookmarks, more writing for you.&lt;/p&gt;
+&lt;button class="btn"&gt;Learn more&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+__________________________________________________________________________________________________
+
+laptop.html
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Document&lt;/title&gt;
+&lt;link rel="stylesheet" href="laptop.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1 class="heading"&gt;LAPTOP&lt;/h1&gt;
+&lt;h3&gt;After clicked the laptop&lt;/h3&gt;
+&lt;div class="content"&gt;
+&lt;div&gt;
+&lt;img src="laptop.jpg" height="500px" width="600px" alt="note-image"&gt;
+&lt;/div&gt;
+&lt;div class="text-content"&gt;
+&lt;h1&gt;We have so much inspiration!&lt;/h1&gt;
+&lt;p class="text"&gt;The first laptops using the flip form factor appeared in the early 1980s.&lt;/p&gt;
+&lt;p class="text"&gt;A laptop, sometimes called a notebook computer by manufacturers&lt;/p&gt;
+&lt;p class="text"&gt;More pages, more bookmarks, more writing for you&lt;/p&gt;
+&lt;button class="btn"&gt;Learn more&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+_______________________________________________________________________________________________________
+
+phone.html
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Document&lt;/title&gt;
+&lt;link rel="stylesheet" href="phone.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1 class="heading"&gt;MOBILE PHONE&lt;/h1&gt;
+&lt;div class="content"&gt;
+&lt;div&gt;
+&lt;img src="phone.jpg" height="500px" width="600" alt="coffee-image"&gt;
+&lt;/div&gt;
+&lt;div class="text-content"&gt;
+&lt;h1&gt;Your pocket friend!&lt;/h1&gt;
+&lt;h4 class="text"&gt;Take a selfie and post your status&lt;/h4&gt;
+&lt;p class="text"&gt;Alexander Graham bell Discovered me.&lt;/p&gt;
+&lt;p class="text"&gt; &lt;/p&gt;
+&lt;p class="text"&gt;More pages, more bookmarks, more writing for you.&lt;/p&gt;
+&lt;button class="btn"&gt;Learn more&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+_______________________________________________________________________________________________________
+
+coffee.css
+
+*{
+padding: 0;
+margin-top: 20px;
+}
+.content{
+display: flex;
+}
+img{
+margin-left: 10px ;
+}
+.btn{
+width: 150px;
+height: 50px;
+background-color: rgb(206, 67, 33);
+color: white;
+border: none;
+border-radius: 50px;
+font-size: 16px;
+margin-top: 20px;
+}
+.heading{
+display: flex;
+justify-content: center;
+}
+.text{
+margin-top: 10px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-size: 18px;
+}
+.text-content{
+margin-top: 150px;
+margin-left: 100px;
+border: rgb(207, 195, 195);
+}
+__________________________________________________________________________________________________
+
+laptop.css
+
+*{
+padding: 0;
+margin-top: 20px;
+}
+.content{
+display: flex;
+}
+img{
+margin-left: 10px ;
+}
+.btn{
+width: 150px;
+height: 50px;
+background-color: rgb(206, 67, 33);
+color: white;
+border: none;
+border-radius: 50px;
+font-size: 16px;
+margin-top: 20px;
+}
+.heading{
+display: flex;
+justify-content: center;
+}
+.text{
+margin-top: 10px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-size: 18px;
+}
+.text-content{
+margin-top: 150px;
+margin-left: 100px;
+border: rgb(207, 195, 195);
+}
+__________________________________________________________________________________________________
+
+phone.css
+
+*{
+padding: 0;
+margin-top: 20px;
+}
+.content{
+display: flex;
+}
+img{
+margin-left: 10px ;
+}
+.btn{
+width: 150px;
+height: 50px;
+background-color: rgb(206, 67, 33);
+color: white;
+border: none;
+border-radius: 50px;
+font-size: 16px;
+margin-top: 20px;
+}
+.heading{
+display: flex;
+justify-content: center;
+}
+.text{
+margin-top: 10px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-size: 18px;
+}
+.text-content{
+margin-top: 150px;
+margin-left: 100px;
+border: rgb(207, 195, 195);
+}
+____________________________________________________________________________________________________
+
+images:
+
+phone.jpg
+
+laptop.jpg
+
+image1.jpg
+
+coffee.jpg
+
+lap.jpg
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

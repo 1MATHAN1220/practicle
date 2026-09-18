@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 8 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+_________pro8__________
+
+simpleserver.java
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pro8;
+
+/**
+ *
+ * @author PGLAB_NEW
+ */
+
+import java.io.*;
+import java.net.*;
+
+public class simpleserver {
+    public static void main(String[] args) {
+        int port = 12345; // Port number to listen on
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Server is listening on port " + port);
+            while (true) {
+                Socket socket = serverSocket.accept(); // Accept client connection
+                System.out.println("New client connected");
+                // Handle client in a new thread
+                new Thread(new ClientHandler(socket)).start();
+            }
+        } catch (IOException e) {
+            System.out.println("Server error: " + e.getMessage());
+        }
+    }
+}
+
+class ClientHandler implements Runnable {
+    private Socket socket;
+    public ClientHandler(Socket socket) {
+        this.socket = socket;
+    }
+    public void run() {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+            String message;
+            while ((message = in.readLine()) != null) {
+                System.out.println("Received: " + message);
+                out.println("Echo: " + message); // Echo message back to client
+            }
+        } catch (IOException e) {
+            System.out.println("Client disconnected: " + e.getMessage());
+        } finally {
+            try {
+                socket.close();
+            } catch (IOException e) {
+                System.out.println("Error closing socket: " + e.getMessage());
+            }
+        }
+    }
+}
+
+
+__________________________________________________________________________________________________
+
+simpleclient.java
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pro8;
+
+/**
+ *
+ * @author PGLAB_NEW
+ */
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+public class simpleclient {
+    public static void main(String[] args) {
+        String hostname = "localhost"; // Server hostname
+        int port = 12345; // Server port
+        try (Socket socket = new Socket(hostname, port);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Connected to the server");
+            String userInput;
+            while (true) {
+                System.out.print("Enter message (exit to quit): ");
+                userInput = scanner.nextLine();
+                if ("exit".equalsIgnoreCase(userInput)) {
+                    break; // Exit the loop and close connection
+                }
+                out.println(userInput); // Send message to server
+                String response = in.readLine(); // Read response from server
+                System.out.println("Server response: " + response);
+            }
+        } catch (IOException e) {
+            System.out.println("Client error: " + e.getMessage());
+        }
+    }
+}
+
+
+
+__________________________________________________________________________________________________
+
+cmd
+
+
+
+
+
+
+
+cmd__1:
+
+D:
+
+cd D:\sem3lab\pro8\src\main\java\pro8
+
+javac simpleserver.java
+
+cd ..
+
+java pro8.simpleserver
+
+___________________________________________________________________
+
+cmd__2:
+
+D:
+
+cd D:\sem3lab\pro8\src\main\java
+
+cd pro8
+
+cd ..
+
+java pro8.simpleclient
+
+
+
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

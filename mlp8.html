@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 8 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">import tensorflow as tf
+from tensorflow.keras import layers, models
+from tensorflow.keras.datasets import cifar10
+import matplotlib.pyplot as plt
+
+# Load CIFAR-10 dataset
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+
+# Normalize pixel values
+x_train = x_train.astype('float32') / 255.0
+x_test = x_test.astype('float32') / 255.0
+
+# Convert labels to categorical format
+y_train = tf.keras.utils.to_categorical(y_train, 10)
+y_test = tf.keras.utils.to_categorical(y_test, 10)
+
+# Create CNN model
+model = models.Sequential()
+
+model.add(
+    layers.Conv2D(
+        32,
+        (3, 3),
+        activation='relu',
+        input_shape=(32, 32, 3)
+    )
+)
+
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(
+    layers.Conv2D(
+        64,
+        (3, 3),
+        activation='relu'
+    )
+)
+
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(
+    layers.Conv2D(
+        64,
+        (3, 3),
+        activation='relu'
+    )
+)
+
+model.add(layers.Flatten())
+
+model.add(
+    layers.Dense(
+        64,
+        activation='relu'
+    )
+)
+
+model.add(
+    layers.Dense(
+        10,
+        activation='softmax'
+    )
+)
+
+# Compile the model
+model.compile(
+    optimizer='adam',
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+# Display model architecture
+model.summary()
+
+# Train the model
+history = model.fit(
+    x_train,
+    y_train,
+    epochs=10,
+    batch_size=64,
+    validation_split=0.2
+)
+
+# Evaluate the model
+test_loss, test_accuracy = model.evaluate(
+    x_test,
+    y_test
+)
+
+print(f"Test accuracy: {test_accuracy:.3f}")
+
+# Plot training and validation accuracy
+plt.plot(
+    history.history['accuracy'],
+    label='accuracy'
+)
+
+plt.plot(
+    history.history['val_accuracy'],
+    label='val_accuracy'
+)
+
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+
+plt.ylim([0, 1])
+
+plt.legend(loc='lower right')
+
+plt.title('Training and Validation Accuracy')
+
+plt.show()
+
+__________________________________________________________________________________________________
+cmd
+
+
+py -3.10 -m pip install tensorflow
+
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

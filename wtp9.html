@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 9 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+
+index.html
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        $(document).ready(function() {
+
+            $("#hide").click(function() {
+                $("p").hide();
+            });
+
+            $("#show").click(function() {
+                $("p").show();
+            });
+
+        });
+    &lt;/script&gt;
+
+    &lt;style&gt;
+
+        h1 {
+            color: brown;
+        }
+
+        button {
+            font-size: larger;
+            margin: 10px;
+            width: 200px;
+            height: 50px;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Using jQuery to hide a paragraph&lt;/h1&gt;
+
+    &lt;h3&gt;
+        If you click on the "Hide" button, I will disappear.
+    &lt;/h3&gt;
+
+    &lt;p&gt;
+        I need to hide an element paragraph in jQuery,
+        but I want that element paragraph is hidden and
+        retains its place.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        When you click the hide button paragraph is hidden by jQuery.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Click the show button to view the paragraph text.
+    &lt;/p&gt;
+
+    &lt;button id="hide"&gt;Hide&lt;/button&gt;
+
+    &lt;button id="show"&gt;Show&lt;/button&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+      
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

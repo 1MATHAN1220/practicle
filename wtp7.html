@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 7 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+index.html
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Input Validation with AngularJS&lt;/title&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"&gt; &lt;/script&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body ng-app="myApp" ng-controller="FormController"&gt;
+&lt;div class="container"&gt;
+&lt;h1&gt;Input Validation Form&lt;/h1&gt;
+&lt;form name="userForm" novalidate&gt;
+<!-- Username Field -->
+&lt;div class="form-group"&gt;
+&lt;label for="username"&gt;Username:&lt;/label&gt;
+&lt;input type="text" id="username" ng-model="user.username" required ng-pattern="/^[a-zA-Z0-9]+$/" name="username" /&gt;
+&lt;span ng-show="userForm.username.$touched && userForm.username.$invalid"&gt;
+&lt;small class="error" ng-show="userForm.username.$error.required"&gt;Username is required.&lt;/small&gt;
+&lt;small class="error" ng-show="userForm.username.$error.pattern"&gt;Only alphanumeric characters are allowed.&lt;/small&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+<!-- Email Field -->
+&lt;div class="form-group"&gt;
+&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" ng-model="user.email" required name="email" /&gt;
+&lt;span ng-show="userForm.email.$touched && userForm.email.$invalid"&gt;
+&lt;small class="error" ng-show="userForm.email.$error.required"&gt;Email is required.&lt;/small&gt;
+&lt;small class="error" ng-show="userForm.email.$error.email"&gt;Invalid email format.&lt;/small&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+<!-- Password Field -->
+&lt;div class="form-group"&gt;
+&lt;label for="password"&gt;Password:&lt;/label&gt;
+&lt;input type="password" id="password" ng-model="user.password" required name="password"
+ng-minlength="8"
+ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*?&]{8,}$/" /&gt;
+&lt;span ng-show="userForm.password.$touched && userForm.password.$invalid"&gt;
+&lt;small class="error" ng-show="userForm.password.$error.required"&gt;Password is required.&lt;/small&gt;
+&lt;small class="error" ng-show="userForm.password.$error.minlength"&gt;Password must be at least 8 characters long.&lt;/small&gt;
+&lt;small class="error" ng-show="userForm.password.$error.pattern"&gt;Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.&lt;/small&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+<!-- Confirm Password Field -->
+&lt;div class="form-group"&gt;
+&lt;label for="confirmPassword"&gt;Confirm Password:&lt;/label&gt;
+&lt;input type="password" id="confirmPassword" ng-model="user.confirmPassword" required name="confirmPassword"
+ng-required="user.password"
+ng-change="userForm.confirmPassword.$validate()" /&gt;
+&lt;span ng-show="userForm.confirmPassword.$touched && userForm.confirmPassword.$invalid"&gt;
+&lt;small class="error" ng-show="userForm.confirmPassword.$error.required"&gt;Confirmation is required.&lt;/small&gt;
+&lt;small class="error" ng-show="!passwordMatch()"&gt;Passwords do not match.&lt;/small&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+<!-- Age Field -->
+&lt;div class="form-group"&gt;
+&lt;label for="age"&gt;Age:&lt;/label&gt;
+&lt;input type="number" id="age" ng-model="user.age" required name="age" min="1" /&gt;
+&lt;span ng-show="userForm.age.$touched && userForm.age.$invalid"&gt;
+&lt;small class="error" ng-show="userForm.age.$error.required"&gt;Age is required.&lt;/small&gt;
+&lt;small class="error" ng-show="userForm.age.$error.min"&gt;Age must be a positive number.&lt;/small&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+<!-- Date of Birth Field -->
+&lt;div class="form-group"&gt;
+&lt;label for="dob"&gt;Date of Birth:&lt;/label&gt;
+&lt;input type="date" id="dob" ng-model="user.dob" required name="dob" /&gt;
+&lt;span ng-show="userForm.dob.$touched && userForm.dob.$invalid"&gt;
+&lt;small class="error" ng-show="userForm.dob.$error.required"&gt;Date of Birth is required.&lt;/small&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+<!-- Phone Number Field -->
+&lt;div class="form-group"&gt;
+&lt;label for="phone"&gt;Phone Number:&lt;/label&gt;
+&lt;input type="tel" id="phone" ng-model="user.phone" required ng-pattern="/^[0-9]{10}$/" name="phone" /&gt;
+&lt;span ng-show="userForm.phone.$touched && userForm.phone.$invalid"&gt;
+&lt;small class="error" ng-show="userForm.phone.$error.required"&gt;Phone number is required.&lt;/small&gt;
+&lt;small class="error" ng-show="userForm.phone.$error.pattern"&gt;Phone number must be 10 digits.&lt;/small&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;button type="submit" ng-disabled="userForm.$invalid" ng-click="submitForm()"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+&lt;div ng-if="submissionSuccess"&gt;
+&lt;h3&gt;Form Submitted Successfully!&lt;/h3&gt;
+&lt;p&gt;Username: {{ user.username }}&lt;/p&gt;
+&lt;p&gt;Email: {{ user.email }}&lt;/p&gt;
+&lt;p&gt;Age: {{ user.age }}&lt;/p&gt;
+&lt;p&gt;Date of Birth: {{ user.dob | date:'mediumDate' }}&lt;/p&gt;
+&lt;p&gt;Phone: {{ user.phone }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+__________________________________________________________________________________________________
+
+style.css
+
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin: 0;
+    padding: 20px;
+    color: white;
+}
+
+.container {
+    max-width: 350px;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1rem;
+
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 8px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    transition: background 0.3s, color 0.3s;
+}
+
+.form-group label:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: #007bff;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ff00ff;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+__________________________________________________________________________________________________
+app.js
+  
+angular.module('myApp', [])
+.controller('FormController', ['$scope', function($scope) {
+$scope.user = {};
+$scope.submissionSuccess = false;
+$scope.submitForm = function() {
+if ($scope.userForm.$valid) {
+$scope.submissionSuccess = true;
+// Here you can send the data to your server
+console.log('Form data:', $scope.user);
+}
+};
+}]);
+
+__________________________________________________________________________________________________
+
+bg.jpg
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

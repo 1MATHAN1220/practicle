@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 10 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models
+import matplotlib.pyplot as plt
+
+
+# Generate time-series data
+def generate_data(timesteps=1000):
+    x = np.linspace(0, 50, timesteps)
+    y = np.sin(x) + np.random.normal(
+        scale=0.1,
+        size=timesteps
+    )
+    return y
+
+
+# Prepare data for LSTM
+def prepare_data(data, time_step=10):
+    X, y = [], []
+
+    for i in range(len(data) - time_step):
+        X.append(data[i:(i + time_step)])
+        y.append(data[i + time_step])
+
+    return np.array(X), np.array(y)
+
+
+# Parameters
+timesteps = 1000
+time_step = 10
+batch_size = 32
+epochs = 20
+
+
+# Generate data
+data = generate_data(timesteps)
+
+
+# Prepare sequences
+X, y = prepare_data(data, time_step)
+
+
+# Reshape data for LSTM
+X = X.reshape(
+    (X.shape[0], X.shape[1], 1)
+)
+
+
+# Split into training and validation data
+split = int(0.8 * len(X))
+
+X_train = X[:split]
+X_val = X[split:]
+
+y_train = y[:split]
+y_val = y[split:]
+
+
+# Create LSTM model
+model = models.Sequential([
+    layers.LSTM(
+        50,
+        return_sequences=True,
+        input_shape=(time_step, 1)
+    ),
+
+    layers.LSTM(50),
+
+    layers.Dense(1)
+])
+
+
+# Compile model
+model.compile(
+    optimizer='adam',
+    loss='mean_squared_error'
+)
+
+
+# Train model
+history = model.fit(
+    X_train,
+    y_train,
+    validation_data=(X_val, y_val),
+    epochs=epochs,
+    batch_size=batch_size
+)
+
+
+# Evaluate model
+loss = model.evaluate(
+    X_val,
+    y_val
+)
+
+print(f"Validation Loss: {loss}")
+
+
+# Make predictions
+predictions = model.predict(X_val)
+
+
+# Plot true vs predicted values
+plt.figure(figsize=(14, 5))
+
+plt.plot(
+    range(len(y_val)),
+    y_val,
+    label='True Values'
+)
+
+plt.plot(
+    range(len(predictions)),
+    predictions,
+    label='Predicted Values',
+    alpha=0.7
+)
+
+plt.title('LSTM Predictions vs True Values')
+plt.xlabel('Time Steps')
+plt.ylabel('Value')
+plt.legend()
+
+plt.show()
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

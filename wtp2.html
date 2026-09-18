@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 2 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+index.html
+
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt; RESUME &lt;/title&gt;
+&lt;style&gt; table, th, td {border:1px solid black;}&lt;/style&gt;
+&lt;/head&gt;
+&lt;h3 style="color:blue;"&gt; PERSONAL INFORMATION &lt;/h3&gt;
+&lt;p&gt; NAME: VENGADESHWARI &lt;/p&gt;
+&lt;p&gt; EMAIL: albatross26@gmail.com &lt;/p&gt;
+&lt;p&gt; CONTACT NO: 9626338532 &lt;/p&gt;
+&lt;h3 style="color:green;"&gt; EDUCATIONAL INFO &lt;/h3&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt; Educational Qualification &lt;/th&gt;
+&lt;th&gt; Marks &lt;/th&gt;
+&lt;th&gt; College Name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt; BCA &lt;/td&gt;
+&lt;td&gt; 85% &lt;/td&gt;
+&lt;td&gt; SIASC &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt; MCA &lt;/td&gt;
+&lt;td&gt; 88% &lt;/td&gt;
+&lt;td&gt; SIASC &lt;/td&gt;
+&lt;/table&gt;
+&lt;h3 style="color:blue;"&gt; CAREER OBJECT &lt;/h3&gt;
+&lt;p&gt; To work on a challenging job profile &lt;br/&gt;
+which provides an oppurtunity to enhance &lt;br/&gt;
+my technical skills and knowledge, this could&lt;br/&gt;
+provide me and insights into new aspects so that it would be helpful form my career&lt;/p&gt;
+&lt;h3 style="color:green;"&gt; TECHNICAL PROFILE &lt;h3&gt;
+&lt;li&gt; Language: C programming, c++, java programming, net technology &lt;/li&gt;
+&lt;li&gt; MS office and front page &lt;/li&gt;
+&lt;li&gt; Web technologies: Html, css, javascript, asp, net &lt;/li&gt;
+&lt;h3 style="color:blue;"&gt;STRUCTURE&lt;/h3&gt;
+&lt;li&gt; Work with positive attitude and contribute towards the healthy functioning of the organisation&lt;/li&gt;
+&lt;li&gt; Self cofidence and great patience &lt;/li&gt;
+&lt;li&gt; Analyzing every angle of a project before working on it&lt;/li&gt;
+&lt;li&gt; Willingness to learn &lt;/li&gt;
+&lt;li&gt; Adaptability to change environment &lt;/li&gt;
+&lt;/html&gt;
+
+
+
+
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

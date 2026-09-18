@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 7 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+
+# Number of samples
+n_samples = 300
+
+# Number of clusters
+n_clusters = 4
+
+# Generate sample data
+x, y = make_blobs(
+    n_samples=n_samples,
+    centers=n_clusters,
+    random_state=42
+)
+
+# Create K-Means model
+kmeans = KMeans(
+    n_clusters=n_clusters,
+    random_state=42,
+    n_init=10
+)
+
+# Train the model
+kmeans.fit(x)
+
+# Predict cluster labels
+y_kmeans = kmeans.predict(x)
+
+# Create plot
+plt.figure(figsize=(8, 6))
+
+# Plot data points
+plt.scatter(
+    x[:, 0],
+    x[:, 1],
+    c=y_kmeans,
+    s=50,
+    cmap='viridis'
+)
+
+# Get cluster centers
+centers = kmeans.cluster_centers_
+
+# Plot cluster centers
+plt.scatter(
+    centers[:, 0],
+    centers[:, 1],
+    c='red',
+    s=200,
+    alpha=0.5,
+    marker='x'
+)
+
+# Graph details
+plt.title('K-Means Clustering')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+
+# Display graph
+plt.show()
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 6 Code</h2>
+
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <code id="codeBlock">from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# Iris dataset load செய்தல்
+data = load_iris()
+
+# Features மற்றும் target
+X = data.data
+y = data.target
+
+# Training மற்றும் testing data பிரித்தல்
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.3,
+    random_state=42
+)
+
+# Decision Tree model
+dt = DecisionTreeClassifier(random_state=42)
+
+# Hyperparameters
+param_grid = {
+    'criterion': ['gini', 'entropy'],
+    'max_depth': [None, 10, 20, 30, 40, 50],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
+
+# GridSearchCV
+grid_search = GridSearchCV(
+    estimator=dt,
+    param_grid=param_grid,
+    cv=5,
+    n_jobs=1,
+    verbose=2
+)
+
+# Model training
+grid_search.fit(X_train, y_train)
+
+# சிறந்த parameters
+print("\nBest Parameters:")
+print(grid_search.best_params_)
+
+# சிறந்த score
+print("\nBest Score:")
+print(grid_search.best_score_)
+
+# Best model
+best_dt = grid_search.best_estimator_
+
+# Prediction
+y_pred_tuned = best_dt.predict(X_test)
+
+# Accuracy
+print("\nAccuracy of Tuned Model:")
+print(accuracy_score(y_test, y_pred_tuned))
+
+# Classification report
+print("\nClassification Report of Tuned Model:")
+print(classification_report(y_test, y_pred_tuned))
+</code>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeText = document.getElementById("codeBlock").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.innerText = "Copied!";
+                setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+            }).catch(err => {
+                alert("Failed to copy code: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>
