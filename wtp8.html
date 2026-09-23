@@ -370,6 +370,325 @@ try {
 &lt;/body&gt; 
 &lt;/html&gt;
             
+
+__________________________________________________________________________________________________
+
+step1 :xampp d drive la irukkananum
+
+step2:உங்கள் D:\xampp\htdocs\ என்ற போல்டருக்குள் செல்லவும்
+
+step3:student_project என்ற பெயரில் ஒரு புதிய போல்டரை உருவாக்குங்கள்.
+
+step4:students_project இந்த புதிய போல்டருக்குள் சேமியுங்கள்:admin.php,login.php,logout.php,student.php,student_login.php
+
+step5:D:\xampp\apache\conf\httpd.conf கோப்பை Notepad-ல் திறக்கவும். ithai maatri intha code ah apply pannavum
+
+step6:httpd:
+_______________________________________________________________
+
+             ServerRoot "d:/xampp/apache"
+
+Listen 8080
+
+LoadModule access_compat_module modules/mod_access_compat.so
+LoadModule actions_module modules/mod_actions.so
+LoadModule alias_module modules/mod_alias.so
+LoadModule allowmethods_module modules/mod_allowmethods.so
+LoadModule asis_module modules/mod_asis.so
+LoadModule auth_basic_module modules/mod_auth_basic.so
+LoadModule authn_core_module modules/mod_authn_core.so
+LoadModule authn_file_module modules/mod_authn_file.so
+LoadModule authz_core_module modules/mod_authz_core.so
+LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+LoadModule authz_host_module modules/mod_authz_host.so
+LoadModule authz_user_module modules/mod_authz_user.so
+LoadModule autoindex_module modules/mod_autoindex.so
+LoadModule cgi_module modules/mod_cgi.so
+LoadModule dir_module modules/mod_dir.so
+LoadModule env_module modules/mod_env.so
+LoadModule include_module modules/mod_include.so
+LoadModule isapi_module modules/mod_isapi.so
+LoadModule log_config_module modules/mod_log_config.so
+LoadModule mime_module modules/mod_mime.so
+LoadModule negotiation_module modules/mod_negotiation.so
+LoadModule rewrite_module modules/mod_rewrite.so
+LoadModule setenvif_module modules/mod_setenvif.so
+
+<IfModule unixd_module>
+User daemon
+Group daemon
+</IfModule>
+
+ServerAdmin admin@example.com
+ServerName localhost:8080
+
+<Directory />
+    AllowOverride none
+    Require all denied
+</Directory>
+
+# இங்கிருந்த பழைய C: பாதை D: டிரைவ் பாதையாக மாற்றப்பட்டுள்ளது
+DocumentRoot "D:/xampp/htdocs"
+
+<Directory "D:/xampp/htdocs">
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Require all granted
+</Directory>
+
+<IfModule dir_module>
+    DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm
+</IfModule>
+
+<Files ".ht*">
+    Require all denied
+</Files>
+
+ErrorLog "logs/error.log"
+LogLevel warn
+
+<IfModule log_config_module>
+    LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%h %l %u %t \"%r\" %>s %b" common
+    CustomLog "logs/access.log" combined
+</IfModule>
+
+<IfModule alias_module>
+    ScriptAlias /cgi-bin/ "d:/xampp/apache/cgi-bin/"
+</IfModule>
+
+<Directory "d:/xampp/apache/cgi-bin">
+    AllowOverride None
+    Options None
+    Require all granted
+</Directory>
+
+<IfModule headers_module>
+    RequestHeader unset Proxy early
+</IfModule>
+
+<IfModule mime_module>
+    TypesConfig conf/mime.types
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+    AddHandler cgi-script .cgi .pl .asp
+    AddType text/html .shtml
+    AddOutputFilter INCLUDES .shtml
+</IfModule>
+
+Include conf/extra/httpd-xampp.conf
+Alias /FoodDonate "D:/venkat/food-waste-management-final"
+
+<Directory "D:/venkat/food-waste-management-final">
+    AllowOverride All
+    Require all granted
+</Directory>
+_____________________________________________________________________
+step7:D:\xampp\phpMyAdmin\config.inc.php கோப்பை Notepad மூலம் திறக்கவும்
+
+step8:delete seithu ithai podavum
+
+
+<?php
+/*
+ * This is needed for cookie based authentication to encrypt password in
+ * cookie
+ */
+$cfg['blowfish_secret'] = 'xampp'; /* YOU SHOULD CHANGE THIS FOR A MORE SECURE COOKIE AUTH! */
+
+/*
+ * Servers configuration
+ */
+$i = 0;
+
+/*
+ * First server
+ */
+$i++;
+
+/* Authentication type and info */
+$cfg['Servers'][$i]['auth_type'] = 'config';
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['password'] = '';
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
+$cfg['Lang'] = '';
+
+/* Bind to the localhost ipv4 address and tcp with port 3307 */
+$cfg['Servers'][$i]['host'] = '127.0.0.1:3307'; // <-- உங்கள் போர்ட் எண் 3307 இங்கே இணைக்கப்பட்டுள்ளது
+$cfg['Servers'][$i]['connect_type'] = 'tcp';
+
+/* 
+ * பிழையைத் தவிர்க்க இந்த மேம்பட்ட கட்டுப்பாட்டுப் பயனர்கள் (Control User) 
+ * தற்காலிகமாக முடக்கப்பட்டுள்ளனர். 
+ */
+$cfg['Servers'][$i]['controluser'] = '';
+$cfg['Servers'][$i]['controlpass'] = '';
+
+/* Advanced phpMyAdmin features */
+$cfg['Servers'][$i]['pmadb'] = '';
+$cfg['Servers'][$i]['bookmarktable'] = '';
+$cfg['Servers'][$i]['relation'] = '';
+$cfg['Servers'][$i]['table_info'] = '';
+$cfg['Servers'][$i]['table_coords'] = '';
+$cfg['Servers'][$i]['pdf_pages'] = '';
+$cfg['Servers'][$i]['column_info'] = '';
+$cfg['Servers'][$i]['history'] = '';
+$cfg['Servers'][$i]['designer_coords'] = '';
+$cfg['Servers'][$i]['tracking'] = '';
+$cfg['Servers'][$i]['userconfig'] = '';
+$cfg['Servers'][$i]['recent'] = '';
+$cfg['Servers'][$i]['table_uiprefs'] = '';
+$cfg['Servers'][$i]['users'] = '';
+$cfg['Servers'][$i]['usergroups'] = '';
+$cfg['Servers'][$i]['navigationhiding'] = '';
+$cfg['Servers'][$i]['savedsearches'] = '';
+$cfg['Servers'][$i]['central_columns'] = '';
+$cfg['Servers'][$i]['designer_settings'] = '';
+$cfg['Servers'][$i]['export_templates'] = '';
+$cfg['Servers'][$i]['favorite'] = '';
+
+/*
+ * End of servers configuration
+ */
+
+?>
+______________________________________________________ 
+
+step9:D:\xampp\mysql\bin\my.ini கோப்பை Notepad-ல் திறக்கவும்
+code delete seithu ithai podavum
+
+
+# Example MySQL config file for small systems.
+#
+# This is for a system with little memory (<= 64M) where MySQL is only used
+# from time to time and it's important that the mysqld daemon
+# doesn't use much resources.
+#
+# You can copy this file to
+# D:/xampp/mysql/bin/my.cnf to set global options,
+# mysql-data-dir/my.cnf to set server-specific options (in this
+# installation this directory is D:/xampp/mysql/data) or
+# ~/.my.cnf to set user-specific options.
+#
+# In this file, you can use all long options that a program supports.
+# If you want to know which options a program supports, run the program
+# with the "--help" option.
+
+# The following options will be passed to all MySQL clients
+[client]
+# password       = your_password 
+port=3307
+socket="D:/xampp/mysql/mysql.sock"
+
+# Here follows entries for some specific programs 
+
+# The MySQL server
+[mysqld]
+port=3307
+socket="D:/xampp/mysql/mysql.sock"
+basedir="D:/xampp/mysql"
+tmpdir="D:/xampp/tmp"
+datadir="D:/xampp/mysql/data"
+pid_file="mysql.pid"
+# enable-named-pipe
+key_buffer=16M
+max_allowed_packet=1M
+sort_buffer_size=512K
+net_buffer_length=8K
+read_buffer_size=256K
+read_rnd_buffer_size=512K
+myisam_sort_buffer_size=8M
+log_error="mysql_error.log"
+
+# UTF 8 Settings (சரியான இடத்தில் மாற்றப்பட்டுள்ளது)
+character-set-server=utf8mb4
+collation-server=utf8mb4_general_ci
+
+# Change here for bind listening
+# bind-address="127.0.0.1" 
+# bind-address = ::1          # for ipv6
+
+# Where do all the plugins live
+plugin_dir="D:/xampp/mysql/lib/plugin/"
+
+# required unique id between 1 and 2^32 - 1
+server-id	=1
+
+# InnoDB Settings
+innodb_data_home_dir="D:/xampp/mysql/data"
+innodb_data_file_path=ibdata1:10M:autoextend
+innodb_log_group_home_dir="D:/xampp/mysql/data"
+innodb_buffer_pool_size=16M
+innodb_log_file_size=5M
+innodb_log_buffer_size=8M
+innodb_flush_log_at_trx_commit=1
+innodb_lock_wait_timeout=50
+
+sql_mode=NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION
+log_bin_trust_function_creators=1
+
+[mysqldump]
+max_allowed_packet=16M
+
+[mysql]
+# Remove the next comment character if you are not familiar with SQL
+#safe-updates
+
+[isamchk]
+key_buffer=20M
+sort_buffer_size=20M
+read_buffer=2M
+write_buffer=2M
+
+[myisamchk]
+key_buffer=20M
+sort_buffer_size=20M
+read_buffer=2M
+write_buffer=2M
+
+[mysqlhotcopy]
+
+
+step9:உங்கள் பிரவுசரைத் திறந்து இந்த லிங்க்கிற்குச் செல்லவும்:👉 http://localhost:8080/phpmyadmin/
+
+2. my_database என்ற புதிய டேட்டாபேஸை உருவாக்கவும்phpMyAdmin பக்கம் திறந்ததும், இடது பக்க மெனுவின் மேல் பகுதியில் உள்ள New என்ற பொத்தானைக் கிளிக் செய்யவும்
+.வலது பக்கத்தில் Database name என்று கேட்கும் பெட்டியில் my_database என்று தட்டச்சு செய்யவும்
+.அதன் அருகில் உள்ள Create பொத்தானைக் கிளிக் செய்யவும்.
+ (இப்போது இடது பக்கப் பட்டியலில் my_database உருவாவதைக் காணலாம்).
+3. மாணவர் விவரங்களுக்கான student டேபிளை உருவாக்கவும்இடது பக்கப் பட்டியலில் நீங்கள் உருவாக்கிய my_database என்பதை ஒருமுறை கிளிக் செய்து தேர்ந்தெடுங்கள்
+.இப்போது மேல் பகுதியில் உள்ள மெனுவில் SQL என்ற பகுதிக்குச் செல்லவும்.அங்குள்ள பெரிய கட்டத்திற்குள் கீழே உள்ள குறியீட்டை (SQL Query) அப்படியே நகலெடுத்து (Copy) பேஸ்ட் (Paste) செய்யவும்
+
+step10:mysql code
+
+CREATE TABLE student (
+    rollno VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    dateofbirth DATE NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    mobileno VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL
+);
+
+
+
+
+
+
+
+http://localhost:8080/student_project/login.php
+
+
+
+
+
+
+
+
+http://localhost:8080/student_project/student_login.php
+
+
 </code>
     </div>
 

@@ -44,9 +44,21 @@
     <div class="code-container">
         <button class="copy-btn" onclick="copyCode()">Copy</button>
         <code id="codeBlock">
+step: create D drive-->ajp-->java
+
+step1:  netbeans-->newproject-->maven-->javaapplication
+
+step2:projectname:pro8 ,     
+
+step3:browser selct pannavendiyathu -->D drive-->ajp-->java
+
+step4:package name-->pro10
+
+
 pro10____________________
 
-pro10.java
+Main.java
+
 
 
 /*
@@ -54,27 +66,24 @@ pro10.java
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ajplab;
+package pro10;
 
 /**
  *
  * @author PGLAB_NEW
  */
-public class pro10 { 
-    public static void main(String[] args) {
-        Person person = new Person();
-        person.setName("Siasc"); 
-        person.setAge(27);
-        
-        System.out.println("Name: " + person.getName()); 
-        System.out.println("Age: " + person.getAge());
-        System.out.println(person);
-    }
+public class Main {
+public static void main(String[] args) {
+Person person = new Person();
+person.setName("Siasc"); person.setAge(27);
+System.out.println("Name: " + person.getName()); System.out.println("Age: " + person.getAge());
+System.out.println(person);
 }
-
+}
 _____________________________________________________________________________________
 
-person.java
+Person.java
+
 
 
 /*
@@ -82,13 +91,13 @@ person.java
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ajplab;
+package pro10;
 
 /**
  *
  * @author PGLAB_NEW
  */
-import java.io.Serializable;
+    import java.io.Serializable;
 public class Person implements Serializable { private String name;
 private int age;
 public Person() {
@@ -101,12 +110,22 @@ public int getAge() { return age;
 }
 public void setAge(int age) { this.age = age;
 }
+@Override
 public String toString() {
 return "Person{name='" + name + "', age=" + age + "}";
 }
 }
+_____________________________________________________________________________________
 
 
+cmd
+
+
+cd /d D:\ajp\java\pro8\src\main\java
+
+javac pro10\Main.java pro10\Person.java
+
+java pro10.Main
 
 
 
